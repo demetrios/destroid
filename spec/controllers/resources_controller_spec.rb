@@ -65,7 +65,8 @@ describe ResourcesController do
       end
 
       it "re-renders the 'new' template" do
-        Resource.stub(:new) { mock_resource(:save => false) }
+        Resource.stub(:new) { mock_resource(:save => false) } # <== from template. replace with below and it'll pass
+        # Resource.stub(:new) { mock_resource(:save => false, :errors => { :anything => "any value (even nil)" } ) }
         post :create, :resource => {}
         response.should render_template("new")
       end
@@ -101,7 +102,8 @@ describe ResourcesController do
       end
 
       it "re-renders the 'edit' template" do
-        Resource.stub(:find) { mock_resource(:update_attributes => false) }
+        Resource.stub(:find) { mock_resource(:update_attributes => false) } # <== from template. similar issue under POST
+        # Resource.stub(:find) { mock_resource(:update_attributes => false, :errors => { :anything => "any value (even nil)" }) }
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -118,6 +120,10 @@ describe ResourcesController do
     it "redirects to the resources list" do
       Resource.stub(:find) { mock_resource }
       delete :destroy, :id => "1"
+      # above (from template) fails. below (with real object) passes
+      # r = Resource.create( :name => "Joe" )
+      # delete :destroy, :id => r.id
+      #
       response.should redirect_to(resources_url)
     end
   end

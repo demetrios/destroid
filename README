@@ -1,3 +1,7 @@
 This project was started to troubleshoot a problem with default specs generated with "rails g scaffold resource name:string" after rspec has been installed.
 
-All tests pass except the last Destroy test.
+Tests all pass even with MongoID... until, it seems, "$ rails generate jquery:install" was run. Then tests broke.
+
+In current state 3 tests will fail. 2 of them can be made to pass by commenting / uncommenting lines (marked in comment).
+
+3rd test (DESTROY) can be made to pass if using a real object instead of the mock.
