@@ -2,6 +2,23 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.4'
 
+gem 'mongoid', :git => "git://github.com/mongoid/mongoid.git"
+gem 'bson_ext'
+
+gem 'haml-rails'
+gem 'rails3-generators'
+
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'annotate-models'
+  gem 'autotest'
+end
+
+group :test do
+	gem 'rspec'
+  gem 'webrat'
+end
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
