@@ -7,6 +7,10 @@ gem 'bson_ext'
 
 gem 'haml-rails'
 gem 'rails3-generators'
+gem 'jquery-rails'
+gem "compass"
+gem 'simple_form'
+gem 'nokogiri'
 
 group :development, :test do
 	gem 'rspec-rails'
