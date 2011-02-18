@@ -65,8 +65,8 @@ describe ResourcesController do
       end
 
       it "re-renders the 'new' template" do
-        Resource.stub(:new) { mock_resource(:save => false) } # <== from template. replace with below and it'll pass
-        # Resource.stub(:new) { mock_resource(:save => false, :errors => { :anything => "any value (even nil)" } ) }
+        # Resource.stub(:new) { mock_resource(:save => false) } # <== from template. replace with below and it'll pass
+        Resource.stub(:new) { mock_resource(:save => false, :errors => { :anything => "any value (even nil)" } ) }
         post :create, :resource => {}
         response.should render_template("new")
       end
@@ -102,8 +102,8 @@ describe ResourcesController do
       end
 
       it "re-renders the 'edit' template" do
-        Resource.stub(:find) { mock_resource(:update_attributes => false) } # <== from template. similar issue under POST
-        # Resource.stub(:find) { mock_resource(:update_attributes => false, :errors => { :anything => "any value (even nil)" }) }
+        # Resource.stub(:find) { mock_resource(:update_attributes => false) } # <== from template. similar issue under POST
+        Resource.stub(:find) { mock_resource(:update_attributes => false, :errors => { :anything => "any value (even nil)" }) }
         put :update, :id => "1"
         response.should render_template("edit")
       end
